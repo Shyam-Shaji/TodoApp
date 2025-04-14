@@ -5,19 +5,19 @@ export default function TodoItem({ item, todos, setTodos }) {
     // console.log("Delete button clicked");
     setTodos(todos.filter((todo) => todo !== item));
   }
-  function handleCompleted(item) {
-    console.log("item name clicked", item);
+  function handleCompleted(name) {
+    // console.log("item name clicked", name);
     setTodos(
       todos.map((todo) =>
-        todo.name === name ? { ...todo, done: !todo.name } : todo
+        todo.name === name ? { ...todo, done: !todo.done } : todo
       )
     );
   }
-  const completed = item.done ? styles.completed : "";
+  const className = item.done ? styles.completed : "";
   return (
     <div className={styles.item}>
       <div className={styles.itemName}>
-        <span className={completed} onClick={() => handleCompleted(item.name)}>
+        <span className={className} onClick={() => handleCompleted(item.name)}>
           {item.name}
         </span>
         <span>
